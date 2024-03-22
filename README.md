@@ -1,13 +1,25 @@
-# Sample Hardhat Project
+# Ballot Contract Interaction Guide
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+## Setup
+1. **Installation**: Run `npm install` to install necessary dependencies.
+2. Create a `.env` file at the root with:
+   - `PRIVATE_KEY=yourPrivateKey` for the deployer/chairperson's private key.
+   - `ALCHEMY_API_KEY=yourAlchemyApiKey` for network access via Alchemy.
+3. **Security**: Never commit your `.env` file to version control.
 
-Try running some of the following tasks:
+## Deploying the Ballot Contract
+- Compile the contract: `npx hardhat compile`.
+- Deploy by running: `npx ts-node --files ./scripts/DeployWithViem.ts "Proposal 1" "Proposal 2"`.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+## Giving Voting Rights
+- To grant voting rights, execute: 
+  `npx ts-node --files ./scripts/GiveRightToVote.ts <contractAddress> <voterAddress>`.
+  - Ensure execution by the deployer/chairperson.
+
+## Voting
+- Cast a vote with: `npx hardhat run scripts/CastVote.ts --network <network> <contractAddress> <proposalIndex>`.
+  - Replace placeholders with the contract's address and the chosen proposal index.
+
+## Notes
+- Make sure `hardhat.config.js` is configured with your network settings.
+- Safeguard your private keys and carefully manage `.env` contents.

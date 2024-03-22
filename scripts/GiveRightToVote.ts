@@ -7,12 +7,20 @@ dotenv.config();
 
 const providerApiKey = process.env.ALCHEMY_API_KEY || "";
 const deployerPrivateKey = process.env.PRIVATE_KEY || "";
-// Ballot Contract address
-const contractAddress = "0x0dA9Be8897f08677806641eA38CaBa4661149767"; 
-// Voter address. If anyone can make this into an array, would be better
-const voterAddress = "0x6f62febCF3872aFF66Ff03ec6065D6BbA9fe65F8"; 
 
 async function giveRightToVote() {
+    const parameters = process.argv.slice(2);
+    if (parameters.length < 2)
+        throw new Error("Parameters not provided. Usage: <contractAddress> <voterAddress>");
+    
+    const contractAddress = parameters[0] as `0x${string}`;
+    if (!/^0x[a-fA-F0-9]{40}$/.test(contractAddress))
+        throw new Error("Invalid contract address");
+
+    const voterAddress = parameters[1];
+    if (!/^0x[a-fA-F0-9]{40}$/.test(voterAddress))
+        throw new Error("Invalid voter address");
+
     try {
         const publicClient = createPublicClient({
             chain: sepolia,

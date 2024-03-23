@@ -17,11 +17,15 @@
   - Ensure execution by the deployer/chairperson.
 
 ## Voting
-- Cast a vote with: `npx ts-node --files scripts/CastVote.ts <contractAddress> <proposalIndex>`.
+- Cast a vote by executing script CastVote.ts with: `npx ts-node --files scripts/CastVote.ts <contractAddress> <proposalIndex>`.
   - Replace placeholders with the contract's address and the chosen proposal index.
  
 ## Delegate Vote
-- Execute script with the Private Key in .env, that holds voting rights. In the CLI specifiy the address that you want to delegate to: `npx ts-node --files ./scripts/DelegateVote.ts <contractAddress> <Address you want to delegate to>`.
+- Execute script DelegateVote.ts with the Private Key in .env, that holds voting rights. In the CLI specifiy the address that you want to delegate to: `npx ts-node --files ./scripts/DelegateVote.ts <contractAddress> <Address you want to delegate to>`.
+
+ ## Get winning proposal
+- install web3 package: `npm install web3`
+- Execute script GetWinningProposal.ts. In the CLI specifiy the contract address: `npx ts-node --files ./scripts/GetWinningProposal.ts <contractAddress>`. 
 
 ## Notes
 - Safeguard your private keys and carefully manage `.env` contents.

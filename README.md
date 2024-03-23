@@ -24,5 +24,4 @@
 - Execute script with the Private Key in .env, that holds voting rights. In the CLI specifiy the address that you want to delegate to: `npx ts-node --files ./scripts/DelegateVote.ts <contractAddress> <Address you want to delegate to>`.
 
 ## Notes
-- Make sure `hardhat.config.js` is configured with your network settings.
 - Safeguard your private keys and carefully manage `.env` contents.

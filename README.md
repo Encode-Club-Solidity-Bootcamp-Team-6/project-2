@@ -17,8 +17,11 @@
   - Ensure execution by the deployer/chairperson.
 
 ## Voting
-- Cast a vote with: `npx hardhat run scripts/CastVote.ts --network <network> <contractAddress> <proposalIndex>`.
+- Cast a vote with: `npx ts-node --files scripts/CastVote.ts <contractAddress> <proposalIndex>`.
   - Replace placeholders with the contract's address and the chosen proposal index.
+ 
+## Delegate Vote
+- Execute script with the Private Key in .env, that holds voting rights. In the CLI specifiy the address that you want to delegate to: `npx ts-node --files ./scripts/DelegateVote.ts  <contractAddress> <Address you want to delegate to>`.
 
 ## Notes
 - Make sure `hardhat.config.js` is configured with your network settings.
